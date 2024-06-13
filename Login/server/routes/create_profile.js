@@ -1,30 +1,26 @@
-// profileRoutes.js
 const router = require("express").Router();
-const collection = require("../models/config");
+const express = require('express');
+const collection = require("../models/config"); 
 
-// Use EJS as the view engine
-router.use((req, res, next) => {
-    req.app.set("view engine", "ejs");
-    next();
-});
-
-router.post("/", async (req, res) => {
+router.post('/create_profile', async (req, res) => {
     try {
-        const data = {
-            name: req.body.username,
-            faculty: req.body.faculty,
-            year: req.body.year,
-            gender: req.body.gender
-        };
+        //const user_id = req.session.user_id; // Retrieve user_id from session or wherever it's stored
+        const { name, faculty, year, gender } = req.body;
 
-        const userdata = await collection.insertMany(data);
-        console.log(userdata);
+        // Create and save the profile with the retrieved user_id
+        const profile = new Profile({
+            //user_id,
+            name,
+            faculty,
+            year,
+            gender
+        });
+        await profile.save();
 
-        res.redirect("/");
-        
+        res.status(201).send(profile);
     } catch (error) {
         console.error(error);
-        res.status(500).send("Internal Server Error");
+        res.status(500).send('Error creating profile: ' + error.message);
     }
 });
 

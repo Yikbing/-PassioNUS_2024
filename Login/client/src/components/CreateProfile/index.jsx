@@ -17,12 +17,30 @@ const CreateProfile = () => {
         setData({ ...data, [input.name]: input.value });
     };
 
+    /*const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const url = "http://localhost:8080/api/create_profile"; // Updated URL
+            await axios.post(url, data);
+            navigate("/home");
+        } catch (error) {
+            if (
+                error.response &&
+                error.response.status >= 400 &&
+                error.response.status <= 500
+            ) {
+                setError(error.response.data.message);
+            }
+        }
+    };*/
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = "http://localhost:8080/api/create_profile";
-            await axios.post(url, data); 
-            window.location = "/";
+            const url = "http://localhost:8080/api/create_profile"; // Updated URL
+            const userData = { ...data, user_id: sessionStorage.getItem('user_id') }; // Include user_id from session
+            await axios.post(url, userData);
+            navigate("/home");
         } catch (error) {
             if (
                 error.response &&
@@ -33,6 +51,7 @@ const CreateProfile = () => {
             }
         }
     };
+        
 
     return (
         <div className={styles.form_container}>

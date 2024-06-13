@@ -1,70 +1,69 @@
-/* style.css */
+/* styles.module.css */
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.form-container {
-  background-color: #fff;
-  padding: 20px 30px;
+.form_container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
 }
 
-h2 {
-  margin-bottom: 20px;
+.form_container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
   color: #333;
 }
 
-.form-group {
-  margin-bottom: 15px;
-  text-align: left;
+.form_group {
+  margin-bottom: 1rem;
 }
 
-.form-group label {
+.form_group label {
   display: block;
-  margin-bottom: 5px;
-  color: #555;
+  margin-bottom: 0.5rem;
+  color: #666;
+  font-weight: bold;
 }
 
-.form-group input,
-.form-group select {
-  width: calc(100% - 22px);
-  padding: 10px;
-  margin-bottom: 10px;
+.input {
+  width: 100%;
+  padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
 }
 
-.form-group input:focus,
-.form-group select:focus {
+.input:focus {
   border-color: #007bff;
   outline: none;
 }
 
-.submit-btn {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
+.error_msg {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ff4d4d;
   border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 100%;
-  text-transform: uppercase;
+  background-color: #ffe6e6;
+  color: #cc0000;
+  text-align: center;
 }
 
-.submit-btn:hover {
+.submit_btn {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit_btn:hover {
   background-color: #0056b3;
 }

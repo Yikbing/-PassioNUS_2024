@@ -3,6 +3,13 @@ const Schema = mongoose.Schema
 
 // Create Schema
 const Profileschema = new Schema({
+
+    /*user_id: {
+        /*type: mongoose.Schema.Types.ObjectId,
+        ref: 'students', // Reference to the 'students' collection
+        type:String,    
+        required: true
+    },*/
     name: {
         type:String,
         required: true
