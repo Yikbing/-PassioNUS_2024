@@ -1,4 +1,3 @@
-// profileRoutes.js
 const router = require("express").Router();
 const collection = require("../models/config");
 
@@ -17,14 +16,19 @@ router.post("/", async (req, res) => {
             gender: req.body.gender
         };
 
-        const userdata = await collection.insertMany(data);
-        console.log(userdata);
-
-        res.redirect("/");
+        const userdata = await collection.insertMany([data]); // Insert data into the collection
+        console.log('User data inserted:', userdata);
         
+        res.status(201).json({
+            message: "Profile created successfully",
+            data: userdata
+        }); // Send a success response to the client
     } catch (error) {
-        console.error(error);
-        res.status(500).send("Internal Server Error");
+        console.error('Error inserting user data:', error);
+        res.status(500).json({
+            message: "Internal Server Error",
+            error: error.message
+        });
     }
 });
 

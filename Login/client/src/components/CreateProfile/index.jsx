@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css"; 
 
 const CreateProfile = () => {
@@ -21,9 +21,11 @@ const CreateProfile = () => {
         e.preventDefault();
         try {
             const url = "http://localhost:8080/api/create_profile";
-            await axios.post(url, data); 
-            window.location = "/";
+            const res = await axios.post(url, data);
+            console.log('Profile created successfully:', res.data); // Logging response
+            navigate("/"); // Navigate to the main page after successful profile creation
         } catch (error) {
+            console.error('Error creating profile:', error); // Logging error
             if (
                 error.response &&
                 error.response.status >= 400 &&
