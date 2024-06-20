@@ -1,17 +1,25 @@
-/* style.css */
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
+/* General reset */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container for the CreateProfile page */
+.create_profile_container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  background-image: url('../../images/ogu.png');
+  background-size: cover;
+  /* Ensure the image covers the entire background */
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.form-container {
+/* Form container styling */
+.form_container {
   background-color: #fff;
   padding: 20px 30px;
   border-radius: 8px;
@@ -26,19 +34,19 @@ h2 {
   color: #333;
 }
 
-.form-group {
+.form_group {
   margin-bottom: 15px;
   text-align: left;
 }
 
-.form-group label {
+.form_group label {
   display: block;
   margin-bottom: 5px;
   color: #555;
 }
 
-.form-group input,
-.form-group select {
+.form_group input,
+.form_group select {
   width: calc(100% - 22px);
   padding: 10px;
   margin-bottom: 10px;
@@ -47,13 +55,13 @@ h2 {
   font-size: 16px;
 }
 
-.form-group input:focus,
-.form-group select:focus {
+.form_group input:focus,
+.form_group select:focus {
   border-color: #007bff;
   outline: none;
 }
 
-.submit-btn {
+.submit_btn {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -65,6 +73,11 @@ h2 {
   text-transform: uppercase;
 }
 
-.submit-btn:hover {
+.submit_btn:hover {
   background-color: #0056b3;
+}
+
+.error_msg {
+  color: red;
+  margin-bottom: 10px;
 }

@@ -34,7 +34,7 @@ const InterestsForm = () => {
     };
 
     const handleGoBack = () => {
-        window.location.href = "/home";
+        window.location.href = "/main";
     };
 
     return (
