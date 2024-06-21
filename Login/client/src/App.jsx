@@ -7,6 +7,8 @@ import Login from "./components/Login";
 import EmailVerify from "./components/EmailVerify";
 import CreateProfile from "./components/CreateProfile";
 import InterestsForm from "./components/Interests";
+import Events from "./components/Events";
+import CreateEvents from "./components/CreateEvents";
 
 function App() {
   const user = localStorage.getItem("token");
@@ -18,7 +20,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Navigate replace to="/login" />} />
-		  <Route path="/students/:id/verify/:token" element={<EmailVerify />} />
+		      <Route path="/students/:id/verify/:token" element={<EmailVerify />} />
         </>
       )}
       {user && (
@@ -28,7 +30,8 @@ function App() {
 		      <Route path="/interests" element={<InterestsForm />} />
           <Route path="/matching" element={<Main />} />
           <Route path="/study" element={<Main />} />
-          <Route path="/events" element={<InterestsForm />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/create_event" element={<CreateEvents />} />
           <Route path="/game" element={<Main />} />
           <Route path="/settings" element={<Main />} />
         </Route>
