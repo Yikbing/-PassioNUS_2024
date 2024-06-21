@@ -3,6 +3,7 @@ const router = express.Router();
 const multer = require("multer");
 const path = require("path");
 const event = require("../models/events"); // Ensure the correct model is imported
+const { date } = require("joi");
 
 // Set storage engine for multer
 const storage = multer.diskStorage({
@@ -71,6 +72,19 @@ router.post("/", (req, res) => {
             res.status(500).json({ message: 'Internal server error' });
         }
     });
+});
+
+router.get("/", async (req, res) => {
+    try {
+        res.status(200).json(
+            await event.find()
+                .sort({date: 1})
+                .limit(20)
+        );
+    } catch (error) {
+        console.error('Error fetching events:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
 });
 
 module.exports = router;
