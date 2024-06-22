@@ -20,7 +20,7 @@ const CreateProfile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = "http://localhost:8080/api/create_profile";
+            const url = `${import.meta.env.VITE_API_BASE_URL}/api/create_profile`;
             const res = await axios.post(url, data);
             console.log('Profile created successfully:', res.data); // Logging response
             navigate("/main"); // Navigate to the main page after successful profile creation

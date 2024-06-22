@@ -26,7 +26,7 @@ const InterestsForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:8080/api/interests", formData);
+            const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/interets`, formData);
             alert(response.data);
         } catch (error) {
             alert("Error submitting interests: " + error.message);

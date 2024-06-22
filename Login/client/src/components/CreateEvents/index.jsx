@@ -52,7 +52,7 @@ const CreateEvents = () => {
         }
 
         try {
-            const url = "http://localhost:8080/api/events";
+            const url = `${import.meta.env.VITE_API_BASE_URL}/api/events`;
             const response = await axios.post(url, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',

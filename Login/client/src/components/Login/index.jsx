@@ -14,20 +14,23 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:8080/api/auth";
-			const { data: res } = await axios.post(url, data);
-			localStorage.setItem("token", res.data);
-			window.location = "/create_profile";
+		  console.log('Submitting login data:', data); // Log the data being submitted
+		  const url = `${import.meta.env.VITE_API_BASE_URL}/api/auth`;
+		  const { data: res } = await axios.post(url, data);
+		  console.log('Login response:', res); // Log the response
+		  localStorage.setItem("token", res.data);
+		  window.location = "/create_profile";
 		} catch (error) {
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-				setError(error.response.data.message);
+		  if (error.response) {
+			console.error('Login error response:', error.response); // Log the error response
+			if (error.response.status >= 400 && error.response.status <= 500) {
+			  setError(error.response.data.message);
 			}
+		  } else {
+			console.error('Login error:', error); // Log the general error if there's no response
+		  }
 		}
-	};
+	  };
 
 	return (
 		<div className={styles.login_container}>

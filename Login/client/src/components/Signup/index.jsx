@@ -19,7 +19,7 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:8080/api/students";
+			const url = `${import.meta.env.VITE_API_BASE_URL}/api/students`;
 			const { data: res } = await axios.post(url, data);
 			setMsg(res.message);
 		} catch (error) {
