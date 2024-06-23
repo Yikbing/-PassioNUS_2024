@@ -1,7 +1,7 @@
 const router = require("express").Router();
+const { studentModel } = require("../models/Student");
 const collection = require("../models/config");
 
-// Use EJS as the view engine
 router.use((req, res, next) => {
     req.app.set("view engine", "ejs");
     next();
@@ -9,16 +9,20 @@ router.use((req, res, next) => {
 
 router.post("/", async (req, res) => {
     try {
+        const { userId, username, faculty, year, gender } = req.body;
         const data = {
-            name: req.body.username,
-            faculty: req.body.faculty,
-            year: req.body.year,
-            gender: req.body.gender
+            name: username,
+            faculty: faculty,
+            year: year,
+            gender: gender
         };
 
         const userdata = await collection.insertMany([data]); // Insert data into the collection
         console.log('User data inserted:', userdata);
-        
+
+        // Update the user's setup_profile boolean to true
+        await studentModel.updateOne({ _id: userId }, { setup_profile: true });
+
         res.status(201).json({
             message: "Profile created successfully",
             data: userdata

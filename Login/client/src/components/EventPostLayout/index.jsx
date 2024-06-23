@@ -10,7 +10,7 @@ const EventPostLayout = ({ title, summary, venue, date, cover, content }) => {
     return (
         <div className={styles.post}>
             <div className={styles.image}>
-                <img src={`${import.meta.env.VITE_API_BASE_URL}/${cover}`} alt="Event Cover" />
+                <img src={`http://localhost:8080/api/create_profile${cover}`} alt="Event Cover" />
             </div>
             <div className={styles.texts}>
                 <h2>{title}</h2>

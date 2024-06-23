@@ -12,7 +12,7 @@ const Layout = () => {
   return (
     <div className={styles.main_container}>
       <nav className={styles.navbar}>
-        <Link to="/main" className={styles.homepage_btn}>
+        <Link to="/" className={styles.homepage_btn}>
           Homepage
         </Link>
         <div className={styles.nav_links}>

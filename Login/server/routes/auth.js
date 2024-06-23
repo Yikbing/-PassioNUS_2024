@@ -45,12 +45,21 @@ router.post("/", async (req, res) => {
 
 		const token = user.generateAuthToken();
 		console.log("User logged in successfully:", user.email);
-		res.status(200).send({ data: token, message: "logged in successfully" });
+		res.status(200).send({
+			data: {
+				token,
+				userId: user._id,  // Include userId in the response
+				setup_profile: user.setup_profile,
+				setup_interests: user.setup_interests,
+			},
+			message: "Logged in successfully"
+		});
 	} catch (error) {
 		console.error("Internal Server Error:", error); // Log the full error
 		res.status(500).send({ message: "Internal Server Error" });
 	}
 });
+
 
 const validate = (data) => {
 	const schema = Joi.object({

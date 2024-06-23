@@ -9,7 +9,7 @@ const Events = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/events`);
+                const response = await fetch(`http://localhost:8080/api/events`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

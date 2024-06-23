@@ -28,7 +28,7 @@ app.use("/api/students", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/create_profile", create_profileRoutes);
 app.use("/api/interests", interestsRoutes);
-app.use("/api/events", eventRoutes)
+app.use("/api/events", eventRoutes);
 
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));

@@ -7,7 +7,9 @@ const studentsSchema = new mongoose.Schema({
     name: {type: String, required: true},
     email: {type: String, required: true},
     password: {type: String, required: true},
-    verified: {type: Boolean, default: false}
+    verified: {type: Boolean, default: false},
+    setup_profile: {type: Boolean, default: false},
+    setup_interests: {type: Boolean, default: false}
 })
 
 studentsSchema.methods.generateAuthToken = function () {

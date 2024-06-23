@@ -1,11 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css"; 
 
 const Login = () => {
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
+	const navigate = useNavigate();
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
@@ -14,23 +15,34 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-		  console.log('Submitting login data:', data); // Log the data being submitted
-		  const url = `${import.meta.env.VITE_API_BASE_URL}/api/auth`;
-		  const { data: res } = await axios.post(url, data);
-		  console.log('Login response:', res); // Log the response
-		  localStorage.setItem("token", res.data);
-		  window.location = "/create_profile";
-		} catch (error) {
-		  if (error.response) {
-			console.error('Login error response:', error.response); // Log the error response
-			if (error.response.status >= 400 && error.response.status <= 500) {
-			  setError(error.response.data.message);
+			const url = `http://localhost:8080/api/auth`;
+			const { data: res } = await axios.post(url, data);
+			console.log('Login response:', res); // Log the response
+			localStorage.setItem("token", res.data.token);
+			localStorage.setItem("userId", res.data.userId); // Store userId in local storage
+
+			// Redirect based on setup_profile and setup_interests
+			if (!res.data.setup_profile) {
+				navigate("/create_profile");
+				window.location.reload(); // reload page
+			} else if (!res.data.setup_interests) {
+				navigate("/interests");
+				window.location.reload(); // reload page
+			} else {
+				navigate("/home");
+				window.location.reload(); // reload page
 			}
-		  } else {
-			console.error('Login error:', error); // Log the general error if there's no response
-		  }
+		} catch (error) {
+			if (error.response) {
+				console.error('Login error response:', error.response); // Log the error response
+				if (error.response.status >= 400 && error.response.status <= 500) {
+					setError(error.response.data.message);
+				}
+			} else {
+				console.error('Login error:', error); // Log the general error if there's no response
+			}
 		}
-	  };
+	};
 
 	return (
 		<div className={styles.login_container}>

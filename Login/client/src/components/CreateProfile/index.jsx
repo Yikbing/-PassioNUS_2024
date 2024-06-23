@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import styles from "./styles.module.css"; 
+import styles from "./styles.module.css";
 
 const CreateProfile = () => {
     const [data, setData] = useState({
@@ -20,10 +20,12 @@ const CreateProfile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = `${import.meta.env.VITE_API_BASE_URL}/api/create_profile`;
-            const res = await axios.post(url, data);
+            const userId = localStorage.getItem("userId"); // Get userId from local storage
+            const url = "http://localhost:8080/api/create_profile"; // Updated URL
+            const res = await axios.post(url, { ...data, userId }); // Include userId in the request body
             console.log('Profile created successfully:', res.data); // Logging response
-            navigate("/main"); // Navigate to the main page after successful profile creation
+            navigate("/interests"); // Navigate to the interest page after successful profile creation
+            window.location.reload(); // reload page
         } catch (error) {
             console.error('Error creating profile:', error); // Logging error
             if (
