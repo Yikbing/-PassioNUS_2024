@@ -1,10 +1,16 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 // Create Schema
-const Profileschema = new Schema({
+const ProfileSchema = new Schema({
+    userId: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        unique: true,
+        ref: 'students'  // Reference to the students collection
+    },
     name: {
-        type:String,
+        type: String,
         required: true
     },
     faculty: {
@@ -12,18 +18,16 @@ const Profileschema = new Schema({
         required: true
     },
     year: {
-        type:Number,
+        type: Number,
         required: true
     },
     gender: {
-        type:String,
+        type: String,
         required: true
     }
-    
-
 });
 
-// collection part
-const collection = new mongoose.model("user_data",Profileschema);
+// Collection part
+const collection = mongoose.model("user_data", ProfileSchema);
 
 module.exports = collection;

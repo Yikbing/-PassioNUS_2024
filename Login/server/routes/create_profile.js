@@ -10,14 +10,18 @@ router.use((req, res, next) => {
 router.post("/", async (req, res) => {
     try {
         const { userId, username, faculty, year, gender } = req.body;
+
+        // Ensure the userId is included in the profile data
         const data = {
+            userId,  // Add the userId here
             name: username,
             faculty: faculty,
             year: year,
             gender: gender
         };
 
-        const userdata = await collection.insertMany([data]); // Insert data into the collection
+        // Insert data into the collection
+        const userdata = await collection.insertMany([data]); 
         console.log('User data inserted:', userdata);
 
         // Update the user's setup_profile boolean to true

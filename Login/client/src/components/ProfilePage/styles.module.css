@@ -1,0 +1,132 @@
+/* styles.module.css */
+
+.profile_interests_container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.error_msg {
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.success_msg {
+    color: green;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.form_group {
+    margin-bottom: 20px;
+}
+
+.form_group_label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.checkbox_input {
+    margin-right: 10px;
+}
+
+
+.form_group_input,
+.form_group_select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.input {
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.submit_btn {
+    display: block;
+    width: 100%;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.submit_btn:hover {
+    background-color: #0056b3;
+}
+
+.cancel_btn {
+    display: block;
+    width: 100%;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cancel_btn:hover {
+    background-color: #5a6268;
+}
+
+.edit_btn {
+    display: block;
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.edit_btn:hover {
+    background-color: #218838;
+}
+
+.profile_item,
+.interests_item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.profile_item_strong,
+.interests_item_strong {
+    color: #555;
+}
