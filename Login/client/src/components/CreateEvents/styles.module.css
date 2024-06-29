@@ -1,0 +1,113 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 91vh;
+    /* Adjust this if needed */
+}
+
+.container input,
+.fileInput {
+    margin-bottom: 10px;
+    /* Adjust the spacing between inputs */
+    width: 80%;
+    /* Adjust the width of the inputs */
+    max-width: 800px;
+    /* Set a maximum width */
+    padding: 10px;
+    /* Add padding to the inputs */
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
+    border: 1px solid;
+    /* Set border width and color */
+}
+
+/* Styles for the ReactQuill container */
+.quillContainer {
+    margin-bottom: 10px;
+    /* Adjust the spacing between inputs */
+    width: 80%;
+    /* Adjust the width of the quill container */
+    max-width: 800px;
+    /* Set a maximum width */
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
+}
+
+/* Additional styles for the ReactQuill editor */
+.quill {
+    height: 600px;
+    /* Adjust the height of the editor */
+    overflow-y: auto;
+    /* Ensure the editor scrolls if content overflows */
+    border: 1px solid;
+    /* Set border width and color to match input fields */
+    border-radius: 5px;
+    /* Add border-radius for consistent styling */
+    padding: 10px;
+    /* Add padding inside the editor */
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
+}
+
+.ql-container {
+    height: 400px;
+    /* Adjust the height of the editor */
+    overflow-y: auto;
+    /* Ensure the editor scrolls if content overflows */
+    border: none;
+    /* Remove default border */
+}
+
+.ql-editor {
+    padding: 10px;
+    /* Add padding to the editor content */
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
+    min-height: 130px;
+    /* Ensure a minimum height for the editor */
+    white-space: pre-wrap;
+    /* Ensure text wraps to the next line */
+}
+
+/* Styles for the create event button */
+.createButton {
+    margin-top: 20px;
+    /* Add some space above the button */
+    padding: 10px 20px;
+    /* Adjust padding for the button */
+    width: 90%;
+    /* Adjust the width of the button */
+    max-width: 600px;
+    /* Set a maximum width */
+    background-color: black;
+    /* Set background color */
+    color: #fff;
+    /* Set text color */
+    border: none;
+    /* Remove default border */
+    border-radius: 5px;
+    /* Add border-radius for consistent styling */
+    cursor: pointer;
+    /* Change cursor to pointer on hover */
+    font-size: 16px;
+    /* Adjust font size */
+    text-align: center;
+    /* Center text */
+}
+
+.createButton:hover {
+    background-color: grey;
+    /* Darken background color on hover */
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
+.success {
+    color: green;
+    margin-top: 10px;
+}

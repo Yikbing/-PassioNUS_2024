@@ -1,0 +1,83 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container for the CreateProfile page */
+.create_profile_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('../../images/ogu.png');
+  background-size: cover;
+  /* Ensure the image covers the entire background */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Form container styling */
+.form_container {
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form_group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form_group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.form_group input,
+.form_group select {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form_group input:focus,
+.form_group select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.submit_btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.submit_btn:hover {
+  background-color: #0056b3;
+}
+
+.error_msg {
+  color: red;
+  margin-bottom: 10px;
+}

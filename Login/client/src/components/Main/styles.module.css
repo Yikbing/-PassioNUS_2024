@@ -1,0 +1,55 @@
+/* General reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* General body styling */
+body {
+	font-family: Arial, sans-serif;
+	/* Prevent scrolling */
+}
+
+/* Container for the Main page contents */
+.main_container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	/* Ensure the container takes the full viewport width */
+	height: 91vh;
+	/* Ensure the container takes the full viewport height */
+	background-image: url('../../images/ogu.png');
+	background-size: cover;
+	/* Ensure the image covers the entire background */
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+/* Main content styles */
+.main_content {
+	padding: 20px;
+	max-width: 800px;
+	/* Limit the width of the content for better readability */
+	background-color: rgba(255, 255, 255, 0.8);
+	/* Optional: add a background to improve readability */
+	border-radius: 8px;
+	/* Optional: add rounded corners */
+	margin: auto;
+	/* Center the content horizontally */
+}
+
+.section {
+	margin-bottom: 20px;
+}
+
+.section h2 {
+	color: #333;
+	margin-bottom: 10px;
+}
+
+.section p {
+	color: #555;
+	line-height: 1.6;
+}

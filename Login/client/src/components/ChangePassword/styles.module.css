@@ -1,0 +1,51 @@
+.change_password_container {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form_group {
+    margin-bottom: 20px;
+}
+
+.form_group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form_group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.submit_btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit_btn:hover {
+    background-color: #0056b3;
+}
+
+.error_msg {
+    color: red;
+    margin-bottom: 20px;
+}
+
+.success_msg {
+    color: green;
+    margin-bottom: 20px;
+}
