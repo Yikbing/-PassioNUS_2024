@@ -10,6 +10,7 @@ import InterestsForm from "./components/Interests";
 import Events from "./components/Events";
 import CreateEvents from "./components/CreateEvents";
 import ProfilePage from "./components/ProfilePage";
+import ChangePassword from "./components/ChangePassword";
 
 function App() {
   const user = localStorage.getItem("token");
@@ -36,7 +37,7 @@ function App() {
             <Route path="create_event" element={<CreateEvents />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="game" element={<Main />} />
-            <Route path="settings" element={<Main />} />
+            <Route path="settings" element={<ChangePassword />} />
           </Route>
         </>
       )}

@@ -10,6 +10,7 @@ const create_profileRoutes = require("./routes/create_profile");
 const interestsRoutes = require("./routes/interests");
 const eventRoutes = require("./routes/events");
 const profileRoutes = require("./routes/profile");
+const changePasswordRoutes = require("./routes/changePassword");
 
 // database connection
 connection();
@@ -31,6 +32,7 @@ app.use("/api/create_profile", create_profileRoutes);
 app.use("/api/interests", interestsRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/profile", profileRoutes);
+app.use("/api/change-password", changePasswordRoutes);
 
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));
