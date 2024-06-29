@@ -18,6 +18,7 @@ const ProfilePage = () => {
       Dance: false,
     },
   });
+  const [originalProfile, setOriginalProfile] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
@@ -57,6 +58,16 @@ const ProfilePage = () => {
     fetchProfileAndInterests();
   }, []);
 
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage("");
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
+
   const handleChange = ({ currentTarget: input }) => {
     if (input.type === "checkbox") {
       setProfile({
@@ -71,16 +82,15 @@ const ProfilePage = () => {
     }
   };
 
-  useEffect(() => {
-    if (message) {
-      const timer = setTimeout(() => {
-        setMessage("");
-      }, 5000);
+  const handleEdit = () => {
+    setOriginalProfile(profile);
+    setIsEditing(true);
+  };
 
-      // Cleanup timer on component unmount
-      return () => clearTimeout(timer);
-    }
-  }, [message]);
+  const handleCancel = () => {
+    setProfile(originalProfile);
+    setIsEditing(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -295,7 +305,7 @@ const ProfilePage = () => {
           </button>
           <button
             type="button"
-            onClick={() => setIsEditing(false)}
+            onClick={handleCancel}
             className={styles.cancel_btn}
           >
             Cancel
@@ -359,10 +369,7 @@ const ProfilePage = () => {
             </div>
           </div>
 
-          <button
-            onClick={() => setIsEditing(true)}
-            className={styles.edit_btn}
-          >
+          <button onClick={handleEdit} className={styles.edit_btn}>
             Edit Profile and Interests
           </button>
         </>
