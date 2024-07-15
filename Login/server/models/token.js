@@ -5,7 +5,7 @@ const tokenSchema = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
         required: true,
-        ref: "user",
+        ref: "students",
         unique: true
     },
     token: { type:String, required: true},

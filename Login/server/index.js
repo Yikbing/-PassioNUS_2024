@@ -1,36 +1,25 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const session = require("express-session"); // Import express-session
+const session = require("express-session");
 const { mongoose, connection } = require("./database");
 const userRoutes = require("./routes/students");
 const authRoutes = require("./routes/auth");
 const createProfileRoutes = require("./routes/create_profile");
 const interestsRoutes = require("./routes/interests");
-const ChatRoutes = require("./routes/chat_function");
+const chatRoutes = require('./routes/chat.js');
+const messageRoutes = require('./routes/message.js');
 const http = require("http");
 const { Server } = require("socket.io");
-//const setupSocket = require("./routes/chat_function"); // Import the chat function setup
-
 
 const app = express();
-
 const server = http.createServer(app); // Create HTTP server using Express app
-	
-/* //only need to use when theres errors 0.o
-//debugging
-console.log(userRoutes);
-console.log(authRoutes);
-console.log(createProfileRoutes);
-console.log(interestsRoutes);
-*/
-
 
 // Database connection
 connection();
 
 // Middlewares
-app.use(express.json()); // Middleware to parse JSON bodies
+app.use(express.json());
 app.use(cors());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
@@ -48,23 +37,45 @@ app.use("/api/students", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/create_profile", createProfileRoutes);
 app.use("/api/interests", interestsRoutes);
-app.use("/api/chat", ChatRoutes);
+app.use("/api/chat", chatRoutes);
+app.use('/api/message', messageRoutes);
+mongoose.set('strictQuery', false);
 
-// Create HTTP server and integrate Socket.IO
-/*const server = http.createServer(app);
-setupSocket(server); // Setup Socket.IO with the server
+// Create Socket.IO instance
+const io = new Server(server);
 
-const port = process.env.PORT || 8080;
-app.listen(port, () => console.log(`SERVER RUNNING ON PORT ${port}`));
-*/
+// Socket.IO events
+io.on('connection', (socket) => {
+  console.log('Socket connected:', socket.id);
 
-ChatRoutes(server); // Pass the HTTP server instance to setupSocket function, used to be setupSocket(server) but theyre the same?? so i changed it to this
+  socket.on('setup', (userData) => {
+    socket.join(userData.id);
+    socket.emit('connected');
+  });
 
+  socket.on('join room', (room) => {
+    socket.join(room);
+  });
+
+  socket.on('typing', (room) => socket.in(room).emit('typing'));
+  socket.on('stop typing', (room) => socket.in(room).emit('stop typing'));
+
+  socket.on('new message', (newMessageReceive) => {
+    const chat = newMessageReceive.chatId;
+    if (!chat.users) console.log('chat.users is not defined');
+    chat.users.forEach((user) => {
+      if (user._id == newMessageReceive.sender._id) return;
+      io.to(user._id).emit('message received', newMessageReceive);
+    });
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Socket disconnected:', socket.id);
+  });
+});
+
+// Start HTTP server
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {
   console.log(`HTTP server running on port ${PORT}`);
 });
-
-/*app.listen(PORT, () => {
-  console.log(`Express app running on port ${PORT}`);
-});*///removed this part cause they cause some weird error where the port is being used simultaneously by 2 things(probably app and server) causing some trouble 

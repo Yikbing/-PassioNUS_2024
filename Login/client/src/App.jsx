@@ -5,7 +5,7 @@ import Login from "./components/Login";
 import EmailVerify from "./components/EmailVerify";
 import CreateProfile from "./components/CreateProfile";
 import InterestsForm from "./components/interests";	
-import ChatPage from "./components/Chat/App";
+import ChatPage from "./components/Chat/pages/home";
 //import Navbar from "./components/Main/index.jsx";
 
 
@@ -22,7 +22,7 @@ function App() {
 			<Route path="/create_profile" exact element={<CreateProfile />} />
 			<Route path="/interests" exact element={<InterestsForm />} />
 			<Route path="/chat" exact element={<ChatPage />} />
-
+			
 		</Routes>
 	);
 }

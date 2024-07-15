@@ -14,7 +14,7 @@ const Main = () => {
 				<div className={styles.nav_links}>
 					<a href="#">Edit Profile</a>
 					<a href="#">Account Settings</a>
-					<a href="#">Chats</a>
+					<a href="chat">Chats</a>
 					<a href="#">Events</a>
 					<a href="/interests">Interests</a>
 				</div>
